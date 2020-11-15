@@ -55,7 +55,7 @@ export class ApexChartComponent implements OnInit, OnChanges {
   ngOnChanges() {
     if (this.newData && this.chart) {
       this.chart.updateSeries([{
-        data: this.newData, name: this.categoryName,
+        data: this.newData, name: this.categoryName || '',
       }]);
     }
   }

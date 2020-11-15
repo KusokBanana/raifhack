@@ -89,7 +89,7 @@ export class DemandComponent implements OnChanges {
       //   this.apexEvent.eventChangeSeriesData();
       // }, 2000);
       setTimeout(() => {
-        this.apexEvent.eventChangeSeriesData(null);
+        this.apexEvent.eventChangeSeriesData();
       }, 2000)
   
       // this.intervalMain = setInterval(() => {
@@ -100,7 +100,6 @@ export class DemandComponent implements OnChanges {
   );
 
   ngOnChanges(): void {
-    console.log(this.category);
     if (this.category) {
       this.change$.next(this.category);
     }

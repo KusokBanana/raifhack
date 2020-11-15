@@ -12,8 +12,8 @@ export class ApexChartService {
     this.changeTimeRange.emit();
   }
 
-  eventChangeSeriesData(series: any) {
-    this.changeSeriesData.emit(series);
+  eventChangeSeriesData() {
+    this.changeSeriesData.emit();
   }
 
   update() {
