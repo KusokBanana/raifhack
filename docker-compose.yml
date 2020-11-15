@@ -1,0 +1,75 @@
+version: '3'
+
+services:
+    database:
+        image: postgres:12.4
+        container_name: raifhack_db
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_DB: ${DB_NAME}
+        networks:
+            - symfony
+        volumes:
+            - ./dbdata:/var/lib/postgresql/data
+    php-fpm:
+        container_name: raifhack_php
+        build:
+            context: .
+            dockerfile: docker/php-fpm/Dockerfile
+        volumes:
+            - ./api/:/var/www/
+        networks:
+            - symfony
+    nginx:
+        container_name: raifhack_nginx
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        volumes:
+            - ./api/:/var/www/
+        ports:
+            - 8000:80
+        networks:
+            - symfony
+
+#    composer:
+#        image: composer
+#        command: ["composer", "install", "--no-ansi", "--ignore-platform-reqs"]
+#        volumes:
+#            - ./api/composer.lock:/app/composer.lock
+#            - ./api/composer.json:/app/composer.json
+#            - ./api/vendor:/app/vendor
+
+#    angular:
+#        container_name: raifhack_frontend
+#        build:
+#            context: .
+#            dockerfile: docker/frontend/Dockerfile
+#        ports:
+#            - 80:4200
+#        volumes:
+#            - ./frontend:/var/www
+#            - /var/www/node_modules
+#        networks:
+#            - symfony
+    
+    # prediction:
+    #     container_name: prediction
+    #     build:
+    #         context: ./prediction
+    #         dockerfile: Dockerfile
+    #     ports:
+    #         - 80:8822
+    #     environment:
+    #         POSTGRES_PASSWORD: ${DB_PASSWORD}
+    #         POSTGRES_USER: ${DB_USER}
+    #         POSTGRES_DB: ${DB_NAME}
+    #     networks:
+    #         - symfony
+
+networks:
+    symfony:
