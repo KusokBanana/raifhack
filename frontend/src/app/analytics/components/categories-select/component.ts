@@ -20,8 +20,8 @@ export class CategoriesSelectComponent implements OnInit {
   @Output() select = new Subject<Category>();
   
   public selected: Category = {
-    mcc: 5995,
-    name: "Pet",
+    mcc: 5811,
+    name: "Supermarkets",
   };
 
   public categories$ = this.http.get<Result>('http://localhost:8000/categories').pipe(
