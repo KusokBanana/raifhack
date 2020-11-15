@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NavigationItem} from '../../../layout/admin/navigation/navigation';
-import {Router} from '@angular/router';
-import {Title} from '@angular/platform-browser';
+import { Component, Input, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
+import { NavigationItemService } from '../../../layout/admin/navigation/navigation';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -15,7 +16,7 @@ export class BreadcrumbComponent implements OnInit {
   breadcrumbList: Array<any> = [];
   public navigationList: Array<any> = [];
 
-  constructor(private route: Router, public nav: NavigationItem, private titleService: Title) {
+  constructor(private route: Router, public nav: NavigationItemService, private titleService: Title) {
     this.navigation = this.nav.get();
     this.type = 'theme2';
     this.setBreadcrumb();
@@ -124,7 +125,7 @@ export class BreadcrumbComponent implements OnInit {
       }
     });
     this.navigationList = result;
-    this.titleService.setTitle(title + ' | Gradient Able Angular 8+ Admin Template');
+    this.titleService.setTitle(title + ' | Raif Analytics');
   }
 
 }

@@ -1,18 +1,41 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AdminComponent } from './theme/layout/admin/admin.component';
-import {AuthComponent} from './theme/layout/auth/auth.component';
+import { AuthComponent } from './theme/layout/auth/auth.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'data',
+  //   pathMatch: 'full',
+  // },
+
   {
     path: '',
     component: AdminComponent,
     children: [
       {
-        path: '',
-        redirectTo: '/dashboard/analytics',
-        pathMatch: 'full'
+        path: 'data',
+        loadChildren: () => import('./data/data.module').then(module => module.DataModule),
       },
+      {
+        path: 'business',
+        loadChildren: () => import('./business/business.module').then(module => module.BusinessModule),
+      },
+      {
+        path: 'analytics',
+        loadChildren: () => import('./analytics/analytics.module').then(module => module.AnalyticsModule),
+      },
+      {
+        path: 'management/sales',
+        loadChildren: () => import('./sales/sales.module').then(module => module.SalesModule),
+      },
+      // {
+      //   path: '',
+      //   redirectTo: '/dashboard/analytics',
+      //   pathMatch: 'full'
+      // },
       {
         path: 'dashboard',
         loadChildren: () => import('./demo/dashboard/dashboard.module').then(module => module.DashboardModule)

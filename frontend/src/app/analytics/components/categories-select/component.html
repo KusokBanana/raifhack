@@ -1,0 +1,17 @@
+<a #popover="ngbPopover" class="underlined" type="button" [ngbPopover]="popContent" [popoverTitle]="popTitle"
+  [autoClose]="'outside'"
+>{{ selected.name }} <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M11 1L6 6L1 1" stroke="#006FFF" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+</a>
+
+<ng-template #popContent>
+  <div class="form-group">
+    <select class="form-control" [ngModel]="selected" (ngModelChange)="change($event, popover)">
+      <option [ngValue]="category" [selected]="selected?.mcc === category.mcc" *ngFor="let category of categories$ | async">
+        {{ category.name }}
+      </option>
+    </select>
+  </div>
+</ng-template>
+<ng-template #popTitle>Выберите категорию из списка</ng-template>

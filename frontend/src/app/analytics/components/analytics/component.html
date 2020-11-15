@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between">
+    <h4 class="mb-3 mt-2">Аналитика</h4>
+
+    <div>
+        Категория: <app-categories-select (select)="setCategory($event)"></app-categories-select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <app-demand [category]="category"></app-demand>
+    </div>
+</div>
+

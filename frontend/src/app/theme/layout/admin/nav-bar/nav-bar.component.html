@@ -5,8 +5,20 @@
   <div class="m-header">
     <a href="javascript:" class="mobile-menu" id="mobile-collapse" (click)="navCollapse()"><span></span></a>
     <a [routerLink]="['/dashboard/analytics']" class="b-brand">
-      <img id="main-logo" src="assets/images/logo.png" alt="" class="logo">
-      <img src="assets/images/logo-icon.png" alt="" class="logo-thumb">
+      <!-- <img id="main-logo" src="assets/images/logo.png" alt="" class="logo"> -->
+      <svg id="main-logo" class="logo" width="17" height="27" viewBox="0 0 17 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-5.96661e-07 13.35L-3.44227e-07 19.125L3 19.125L8.32508 27L16.7251 27L10.4626 17.85C13.7251 16.4625 15.8626 13.8 15.8626 9.7875C15.8626 7.125 15.0751 5.1 13.5376 3.5625C11.7751 1.8 9.00007 0.750002 4.98757 0.750002L-1.14742e-06 0.750002L-8.72042e-07 7.05L4.61257 7.05C7.05007 7.05 8.55008 8.1 8.55008 10.1625C8.55008 12.15 7.12507 13.35 4.65007 13.35L-5.96661e-07 13.35Z" fill="url(#paint0_linear)"/>
+        <path d="M-5.96661e-07 13.35L-3.44227e-07 19.125L3 19.125L8.32508 27L16.7251 27L10.4626 17.85C13.7251 16.4625 15.8626 13.8 15.8626 9.7875C15.8626 7.125 15.0751 5.1 13.5376 3.5625C11.7751 1.8 9.00007 0.750002 4.98757 0.750002L-1.14742e-06 0.750002L-8.72042e-07 7.05L4.61257 7.05C7.05007 7.05 8.55008 8.1 8.55008 10.1625C8.55008 12.15 7.12507 13.35 4.65007 13.35L-5.96661e-07 13.35Z" fill="black"/>
+        <defs>
+        <linearGradient id="paint0_linear" x1="30" y1="-3" x2="-2.92063e-06" y2="27" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FFF73F"/>
+        <stop offset="1" stop-color="#FFC700"/>
+        </linearGradient>
+        </defs>
+      </svg>
+
+      <span class="logo-name">Analytics</span>
+
     </a>
     <a class="mob-toggler" [ngClass]="{'on' : this.menuClass}" href="javascript:" (click)="toggleMobOption()"><i class="feather icon-more-vertical"></i></a>
   </div>

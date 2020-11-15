@@ -1,0 +1,5 @@
+<div class="relative">
+    <app-card cardTitle="Спрос" [options]="false">
+        <app-apex-chart *ngIf="data$ | async; let data" chartID="line-chart-1-cac" [chartConfig]="data"></app-apex-chart>
+    </app-card>
+</div>

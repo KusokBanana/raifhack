@@ -4,7 +4,7 @@ export class GradientConfig {
     subLayout: '', // horizontal-2
     collapseMenu: false,
     layoutType: 'menu-light', // menu-dark, menu-light, dark
-    headerBackColor: 'header-blue', // header-blue, header-red, header-purple, header-info, header-dark, header-orenge
+    headerBackColor: 'header-white', // header-blue, header-red, header-purple, header-info, header-dark, header-orenge
     // header-green, header-yellow, header-orchidgreen, header-indigogreen, header-darkgreen, header-darkblue
     rtlLayout: false,
     navFixedLayout: true,

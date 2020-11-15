@@ -1,7 +1,8 @@
-import {Component, Input, NgZone, OnInit} from '@angular/core';
-import {NavigationItem} from '../../navigation';
-import {Location} from '@angular/common';
-import {GradientConfig} from '../../../../../../app-config';
+import { Location } from '@angular/common';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
+
+import { GradientConfig } from '../../../../../../app-config';
+import { NavigationItem } from '../../navigation';
 
 @Component({
   selector: 'app-nav-group',

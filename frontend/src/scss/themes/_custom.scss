@@ -230,6 +230,11 @@ select-dropdown .selected.highlighted {
   color: $theme-font-color;
 }
 
+.h-list-body .chat-messages .chat-menu-reply > div p,
+.pcoded-header.header-white a.h-back-user-list {
+  color: #fff;
+}
+
 .header-chat .h-list-footer .input-group .form-control {
   height: auto;
 }

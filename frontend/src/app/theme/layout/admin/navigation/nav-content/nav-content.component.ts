@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild } from '@angular/core';
-import { NavigationItem } from '../navigation';
-import { GradientConfig } from '../../../../../app-config';
 import { Location } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild } from '@angular/core';
+
+import { GradientConfig } from '../../../../../app-config';
+import { NavigationItemService } from '../navigation';
 
 @Component({
   selector: 'app-nav-content',
@@ -23,7 +24,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   @ViewChild('navbarContent', {static: false}) navbarContent: ElementRef;
   @ViewChild('navbarWrapper', {static: false}) navbarWrapper: ElementRef;
 
-  constructor(public nav: NavigationItem, private zone: NgZone, private location: Location) {
+  constructor(public nav: NavigationItemService, private zone: NgZone, private location: Location) {
     this.gradientConfig = GradientConfig.config;
     this.windowWidth = window.innerWidth;
 
