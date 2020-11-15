@@ -1,5 +1,6 @@
+import { CategoriesSelectComponent } from './categories-select';
 import { SalesComponent } from './sales';
 
-export const components = [ SalesComponent ];
+export const components = [ SalesComponent, CategoriesSelectComponent ];
 
-export { SalesComponent };
+export { SalesComponent, CategoriesSelectComponent };

@@ -5,11 +5,11 @@ import { AdminComponent } from './theme/layout/admin/admin.component';
 import { AuthComponent } from './theme/layout/auth/auth.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'data',
-  //   pathMatch: 'full',
-  // },
+  {
+    path: '',
+    redirectTo: 'analytics',
+    pathMatch: 'full',
+  },
 
   {
     path: '',

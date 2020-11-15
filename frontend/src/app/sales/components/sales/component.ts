@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Category } from 'src/app/analytics/interfaces';
 
 const sales = {
   Jan: 10,
@@ -15,6 +16,8 @@ const sales = {
 })
 export class SalesComponent {
   
+  public category: Category;
+
   public data$ = of(sales).pipe(
     map(data => ({
       chart: {
@@ -54,4 +57,7 @@ export class SalesComponent {
     }))
   )
 
+  public setCategory(value: Category) {
+    this.category = value;
+  }
 }
