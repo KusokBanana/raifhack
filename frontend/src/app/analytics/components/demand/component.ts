@@ -25,6 +25,7 @@ export class DemandComponent implements OnChanges {
   @Input() category: Category;;
 
   public change$ = new ReplaySubject<Category>();
+  public newData = [];
 
   public transactions$ = this.change$.pipe(
     map(category => new HttpParams().set('mcc', category.mcc.toString())),
@@ -33,7 +34,9 @@ export class DemandComponent implements OnChanges {
   );
   
   public data$ = this.transactions$.pipe(
-    map(transactions => ({
+    map(transactions => transactions.map(t => ({ x: t.date, y: t.amount }))),
+    tap(newData => this.newData = newData),
+    map(series => ({
       chart: {
         height: 300,
         type: 'line',
@@ -58,7 +61,7 @@ export class DemandComponent implements OnChanges {
       },
       colors: ['#4099ff'],
       series: [
-        { data: transactions.map(t => ({ x: t.date, y: t.amount })), name: this.category.name }
+        { data: series, name: this.category.name }
       ],
       // title: {
       //   text: 'Спрос',
@@ -86,8 +89,7 @@ export class DemandComponent implements OnChanges {
       //   this.apexEvent.eventChangeSeriesData();
       // }, 2000);
       setTimeout(() => {
-        this.apexEvent.eventChangeSeriesData();
-        this.apexEvent.eventChangeSeriesData();
+        this.apexEvent.eventChangeSeriesData(null);
       }, 2000)
   
       // this.intervalMain = setInterval(() => {

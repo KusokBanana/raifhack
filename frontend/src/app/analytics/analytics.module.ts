@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NgbDropdownModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { ApexChartService } from '../theme/shared/components/chart/apex-chart/apex-chart.service';
 import { SharedModule } from '../theme/shared/shared.module';
 import { AnalyticsRoutingModule } from './analytics-routing.module';
 import { components } from './components';
@@ -16,6 +17,9 @@ import { components } from './components';
     NgbPopoverModule,
     NgbDropdownModule,
   ],
-  declarations: [components]
+  declarations: [components],
+  providers: [
+    ApexChartService,
+  ]
 })
 export class AnalyticsModule { }
