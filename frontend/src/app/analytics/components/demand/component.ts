@@ -29,7 +29,7 @@ export class DemandComponent implements OnChanges {
 
   public transactions$ = this.change$.pipe(
     map(category => new HttpParams().set('mcc', category.mcc.toString())),
-    switchMap(params => this.http.get<Result>('http://localhost:8000/transactions/by-mcc', { params })),
+    switchMap(params => this.http.get<Result>('http://130.193.56.209:8000/transactions/by-mcc', { params })),
     map(result => result.data),
   );
   

@@ -18,7 +18,7 @@ interface CategoryCount {
 })
 export class CategoriesComponent {
 
-  public counts$ = this.http.get<Result>('http://localhost:8000/categories/counts').pipe(
+  public counts$ = this.http.get<Result>('http://130.193.56.209:8000/categories/counts').pipe(
     map(result => result.data),
   )
   

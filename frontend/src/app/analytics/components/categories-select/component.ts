@@ -24,7 +24,7 @@ export class CategoriesSelectComponent implements OnInit {
     name: "Supermarkets",
   };
 
-  public categories$ = this.http.get<Result>('http://localhost:8000/categories').pipe(
+  public categories$ = this.http.get<Result>('http://130.193.56.209:8000/categories').pipe(
     map(result => result.data)
   );
 
