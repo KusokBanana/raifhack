@@ -24,7 +24,7 @@ class TransactionController extends AbstractController
     }
 
     /**
-     * @Route("/transactions/by-mcc", name="client")
+     * @Route("/transactions/by-mcc", name="by-mcc")
      */
     public function index(Request $request)
     {
@@ -36,19 +36,26 @@ class TransactionController extends AbstractController
         $transactions = $this->entityManager->createQueryBuilder()
             ->select('transaction.mcc')
             ->addSelect('transaction.date')
-            ->addSelect('SUM(transaction.amount)')
+            ->addSelect('SUM(transaction.amount) as amount')
             ->from(Transaction::class, 'transaction')
             ->where(
                 $expr->in('transaction.mcc', ':mcc')
             )
-            ->setMaxResults(100)
+            ->orderBy('transaction.date')
             ->groupBy('transaction.date')
             ->addGroupBy('transaction.mcc')
             ->setParameter('mcc', $mcc)
             ->getQuery()->getArrayResult();
 
         return $this->json([
-            'data' => $transactions,
+            'data' => array_map(
+                fn(array $transaction) => [
+                    'mcc' => $transaction['mcc'],
+                    'date' => $transaction['date']->format('Y-m-d'),
+                    'amount' => (int) $transaction['amount'],
+                ],
+                $transactions
+            ),
         ]);
     }
 }
